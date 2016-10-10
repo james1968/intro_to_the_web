@@ -18,7 +18,13 @@ set :session_secret, 'super secret', 'very secret'
     'The most secret of all'
   end
 
-  get '/cat' do
-    @random_name = %w(Amigo Oscar Viking).sample
+  get '/random-cat' do
+    @name = %w(Amigo Oscar Viking).sample
     erb(:index)
+  end
+
+  get '/named-cat' do
+    p params
+    @name = params[:name]
+    erb :index
   end
